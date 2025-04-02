@@ -1,0 +1,29 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{times}
+\usepackage{geometry}
+\geometry{margin=1in}
+\usepackage{titlesec}
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection.}{1em}{}
+
+\title{Exploring Advancements in the Security of Programming Languages}
+\author{Myles Bell \and Teju Kanaparthy}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{C}
+
+The C programming language is a foundational language used commonly in systems programming, but its low-level nature makes it especially prone to security vulnerabilities. Common issues include buffer overflows, use-after-free errors, and undefined behavior from uninitialized variables or improper memory access. C provides direct access to memory through pointers and lacks safeguards to prevent attackers from misusing them. While C lacks inherent protection against attacks such as these, researchers at the Software Engineering Institute (SEI) at Carnegie Mellon University have attempted to address these challenges. They have developed the SEI CERT C Coding Standard, which provides a set of enforceable rules that guide developers in writing safer C code. The standard promotes secure coding practices by identifying common insecure patterns and offering alternatives that mitigate exploitable bugs (Ballman \& Svoboda, 2016). For example, a buffer overflow vulnerability occurs when a program writes more data to a fixed-size buffer than it can hold, overwriting adjacent memory and allowing an attacker to execute malicious code. The SEI CERT guidelines mitigate this risk by recommending robust input validation, bounds-checking, and the use of safer library functions (Ballman \& Svoboda, 2016). In contrast to C, modern programming languages have inherent security features that help developers mitigate common vulnerabilities at the outset.
+
+\section*{Python}
+
+The Python programming language is highly regarded for its readability and high-level abstractions. However, it is not immune to security vulnerabilities. Due to its extensive use in web development and machine learning, Python applications can be exposed to issues like insecure deserialization, improper input validation, and outdated dependency usage. Unlike C, Python benefits from built-in protections that protect against memory corruption or pointer-related exploits. For example, Bandit and Semgrep are two static analysis tools designed to scan Python code for security vulnerabilities. Bandit focuses on identifying common issues like insecure function calls, while Semgrep offers customizable pattern-matching rules to detect a wide range of code-level flaws. They are particularly effective at detecting command injection—when untrusted input is passed to functions like \texttt{os.system()} or \texttt{subprocess.Popen()} without proper sanitization. Bandit flags such instances by identifying when the \texttt{shell=True} parameter is used in subprocess calls, which creates a high-risk execution context if user input is involved. Similar to the SEI CERT C Coding Standard, researchers have compiled a comprehensive taxonomy of Python vulnerabilities to spread awareness of common attacks that occur despite Python’s inherent protection (Bogaerts, Ivaki, \& Fonseca, 2024). Though this is a major improvement upon the security measures of C, other programming languages like Java go a step further in ensuring a secure framework for developers.
+
+\section*{Current Advancements}
+
+Recent innovations in programming language security leverage deep learning and language models to address the limitations of traditional static analysis. One notable example is a study by Zhao et al., which introduces a novel approach to Python source code vulnerability detection using the CodeBERT language model. Unlike prior systems based on long short-term memory (LSTM) architectures that struggled with capturing deeper features, this method constructs a multi-classification dataset by analyzing differences in code versions and using semantic labeling strategies. CodeBERT, a transformer-based model pre-trained on both natural and programming languages, significantly enhances the detection accuracy and recall of vulnerabilities, achieving an average accuracy of up to 98\% across ten different vulnerability types—including SQL injection, remote code execution, and insecure encryption (Zhao et al., 2024). The research combines modern NLP techniques with software security, demonstrating how models like CodeBERT can intelligently understand the contextual intricacies of code. As a result, this work not only improves vulnerability detection performance but also paves the way for future tools capable of providing automated and precise code analysis for high-level languages.
+
+\end{document}
